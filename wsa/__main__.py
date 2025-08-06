@@ -1,19 +1,21 @@
 from collections import defaultdict
+from pathlib import Path
 import sys
 
-from websiteadmin.commands import conf, pull
+from wsa.commands import conf, pull
 
 
+WSA = str(Path(__file__).parent.name)
 
-USAGE_DEFAULT = """USAGE:
-    websiteadmin --help
+USAGE_DEFAULT = f"""USAGE:
+    {WSA} --help
 """
 
 USAGE = {
-    "pull": """        websiteadmin pull --conf <conf>
+    "pull": f"""         {WSA} pull --conf <conf>
             --conf <conf>: Name of the configuration.
     """,
-    "conf": """        websiteadmin conf [--list] [--conf <conf>]
+    "conf": f"""        {WSA} conf [--list] [--conf <conf>]
             --list: List all the configurations.
             --conf <conf>: Name of the configuration.
     """

@@ -1,7 +1,7 @@
 import os
 
 from git import Repo
-from  websiteadmin.configuration import current_working_directory, CONF_DIR, read_configuration
+from  wsa.configuration import current_working_directory, CONF_DIR, read_configuration
 
 
 def conf(args):
