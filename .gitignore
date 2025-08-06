@@ -1,6 +1,6 @@
 conf/*
-.python-version
-*/website_admin.egg-info/
-*/website_admin.egg-info/**
+src/*
 # General python stuff
+.python-version
+**/__pycache__
 *.pyc
