@@ -1,0 +1,6 @@
+conf/*
+.python-version
+*/website_admin.egg-info/
+*/website_admin.egg-info/**
+# General python stuff
+*.pyc
