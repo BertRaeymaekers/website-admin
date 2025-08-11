@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>{{ title }}</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    header {
+      background-color: #333;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+
+    nav {
+      background-color: #444;
+      overflow: hidden;
+    }
+
+    nav a {
+      float: left;
+      display: block;
+      color: white;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+    }
+
+    nav a:hover {
+      background-color: #666;
+    }
+
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    .left-column {
+      flex: 2;
+      padding: 20px;
+    }
+
+    .right-column {
+      flex: 1;
+      padding: 20px;
+      background-color: #f4f4f4;
+    }
+
+    /* Slideshow */
+    .slideshow {
+      max-width: 100%;
+      position: relative;
+    }
+
+    .slides {
+      display: none;
+      width: 100%;
+    }
+
+    .agenda h3 {
+      margin-top: 0;
+    }
+
+    /* Responsive */
+    @media screen and (max-width: 768px) {
+      .container {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>{{ title }}</h1>
+  </header>
+
+  <nav>
+    {% for menuitem in menu %}
+    <a href="{{ menuitem.link }}">{{ menuitem.title }}</a>
+    {% endfor %}
+  </nav>
+
+  <div class="container">
+    <!-- Left Column: Slideshow -->
+    <div class="left-column">
+      <div class="slideshow">
+        <img class="slides" src="https://via.placeholder.com/600x300?text=Slide+1" alt="Slide 1">
+        <img class="slides" src="https://via.placeholder.com/600x300?text=Slide+2" alt="Slide 2">
+        <img class="slides" src="https://via.placeholder.com/600x300?text=Slide+3" alt="Slide 3">
+      </div>
+    </div>
+
+    <!-- Right Column: Agenda -->
+    <div class="right-column">
+      <div class="agenda">
+        <h3>Upcoming Events</h3>
+        <ul>
+          <li><strong>Aug 10:</strong> Team Meeting at 10 AM</li>
+          <li><strong>Aug 15:</strong> Webinar on Web Design</li>
+          <li><strong>Aug 20:</strong> Project Deadline</li>
+        </ul>
+
+        <h3>Announcements</h3>
+        <ul>
+          <li>New website launch next week!</li>
+          <li>Submit reports by Friday.</li>
+          <li>Holiday on Aug 25.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    let slideIndex = 0;
+    showSlides();
+
+    function showSlides() {
+      let slides = document.getElementsByClassName("slides");
+      for (let i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+      }
+      slideIndex++;
+      if (slideIndex > slides.length) { slideIndex = 1; }
+      slides[slideIndex - 1].style.display = "block";
+      setTimeout(showSlides, 3000); // Change slide every 3 seconds
+    }
+  </script>
+
+</body>
+</html>

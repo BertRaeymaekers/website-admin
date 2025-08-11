@@ -19,7 +19,10 @@ def read_configuration(args):
     if args["conf"][1:]:
         conf.update(read_configuration({"conf": args["conf"[1:]]}))
     for arg,value in args.items():
-        conf[arg] = value
+        if arg == "conf":
+            conf[arg] = value[-1]
+        else:
+            conf[arg] = value
     if not "localdir" in conf:
         if "conf" in args:
             conf["localdir"] = current_working_directory / args["conf"][-1]

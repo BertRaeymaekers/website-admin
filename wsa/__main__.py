@@ -2,7 +2,7 @@ from collections import defaultdict
 from pathlib import Path
 import sys
 
-from wsa.commands import conf, pull
+from wsa.commands import build, conf, pull
 
 
 WSA = str(Path(__file__).parent.name)
@@ -18,13 +18,17 @@ USAGE = {
     "conf": f"""        {WSA} conf [--list] [--conf <conf>]
             --list: List all the configurations.
             --conf <conf>: Name of the configuration.
-    """
+    """,
+    "build": f"""        {WSA} conf [--list] [--conf <conf>]
+            --conf <conf>: Name of the configuration.
+    """,
 }
 
 
 COMMANDS = {
     "conf": (conf, "Check the configuration"),
-    "pull": (pull, "Pull the latest version from the git repo")
+    "pull": (pull, "Pull the latest version from the git repo"),
+    "build": (build, "Build the new webstie"),
 }
 
 
