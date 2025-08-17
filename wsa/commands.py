@@ -110,9 +110,20 @@ def build(args):
                     data = parameters.get(name, {}).get("data",  {})
                     if "title" not in data:
                         data["title"] = menuitem["title"]
-                    print(f"Generating {name}.html from {template}.html.j2 with data:", data)
                     if name in parameters:
                         if "template" in parameters[name]:
                             template = parameters[name]["template"]
-                        with open(build_dir / f"{name}.html", "w") as fh:
-                            fh.write(env.get_template(f"{template}.html.j2").render(conf | parameters | data))
+                    print(f"Generating {name}.html from {template}.html.j2 with data:", data)
+                    with open(build_dir / f"{name}.html", "w") as fh:
+                        fh.write(env.get_template(f"{template}.html.j2").render(conf | parameters | data))
+        return (conf, build_dir)
+
+
+def publish(args):
+    if "build" in args:
+        conf, build_dir = build(args)
+    else:
+        conf = read_configuration(args)
+        build_dir = current_working_directory / "build" / conf["conf"]
+
+

@@ -71,6 +71,36 @@
         flex-direction: column;
       }
     }
+
+    table.listing {
+      width: 100%;
+      border-collapse: collapse;
+      font-family: Arial, sans-serif;
+    }
+
+    table.listing th, 
+    table.listing td {
+      border: 1px solid #ccc;
+      padding: 8px 12px;
+      text-align: left;
+    }
+
+    table.listing th {
+      background-color: #333;
+      color: white;
+    }
+
+    table.listing tr:nth-child(odd) {
+      background-color: #fbfec8ff;
+    }
+
+    table.listing tr:nth-child(even) {
+      background-color: #e2e2e2ff;
+    }
+
+    table.listing tr:hover {
+      background-color: #e6f7ff; /* Light blue on hover */
+    }
   </style>
 </head>
 <body>
@@ -98,54 +128,29 @@
   <div class="container">
     <!-- Left Column: Slideshow -->
     <div class="left-column">
-      <div class="slideshow">
-        {% for name, slide in slides.items() %}
-          {% if slide.link is defined %}
-          <a href="{{ slide.link }}">
-          {% endif %}
-          <img class="slides" src="{{ slide.img }}" alt="{{ slide.txt }}">
-          {% if slide.link is defined %}
-          </a>
-          {% endif %}
+      <div>
+        <h1>{{ title }}</h1>
+        {% for contactinfo_item in contactinfo %}
+          {% for title, contacts in contactinfo_item.items() %}
+            <h2>{{ title }}</h2>
+            <table class="listing">
+              <tbody>
+                {% for contact, details in contacts.items() %}
+                  <tr>
+                    <td>{{ contact }}</td>
+                    <td>{{ details.roles|default([])|join("<br />")|safe }}</td>
+                    <td>{{ details.tel|default("") }}</td>
+                    <td>{{ details.email|default("") }}</td>
+                  </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          {% endfor %}
         {% endfor %}
       </div>
     </div>
 
-    <!-- Right Column: Agenda -->
-    <div class="right-column">
-      <div class="agenda">
-        {% if future is defined %}
-        <h3>{{ future.title }}</h3>
-        <ul>
-          <li><strong>Aug 16-Aug 17:</strong> Open Belgisch Kampioenschap Postuur &amp; Kleur Grasparkieten</li>
-          <li><strong>Sep 27:</strong> BGC dag</li>
-        </ul>
-        {% endif %}
-
-        {% if past is defined %}
-        <h3>{{ past.title }}</h3>
-        <ul>
-        </ul>
-        {% endif %}
-      </div>
-    </div>
   </div>
-
-  <script>
-    let slideIndex = 0;
-    showSlides();
-
-    function showSlides() {
-      let slides = document.getElementsByClassName("slides");
-      for (let i = 0; i < slides.length; i++) {
-        slides[i].style.display = "none";
-      }
-      slideIndex++;
-      if (slideIndex > slides.length) { slideIndex = 1; }
-      slides[slideIndex - 1].style.display = "block";
-      setTimeout(showSlides, 5000); // Change slide every 5 seconds
-    }
-  </script>
 
 </body>
 </html>
