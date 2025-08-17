@@ -1,5 +1,8 @@
+# Only used during run
 conf/*
 src/*
+build/*
+
 # General python stuff
 .python-version
 **/__pycache__

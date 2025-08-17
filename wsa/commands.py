@@ -1,8 +1,10 @@
 import os
 from pathlib import Path
+import shutil
 
 from git import Repo
 from jinja2 import Environment, FileSystemLoader
+import yaml
 
 from  wsa.configuration import current_working_directory, CONF_DIR, read_configuration
 
@@ -53,11 +55,64 @@ def build(args):
     else:
         conf = read_configuration(args)
     src_dir = current_working_directory / "src" / conf["localdir"]
-    build_dir = current_working_directory / "build" / conf["localdir"]
-    path = Path("build") / conf["conf"] 
-    os.makedirs(path, exist_ok=True)
+    build_dir = current_working_directory / "build" / conf["conf"]
+    os.makedirs(build_dir, exist_ok=True)
     env = Environment(loader = FileSystemLoader(f'templates/{conf["template"]}'))
     parameters = {}
-    with open(path / "index.html", "w") as fh:
+    for file in os.listdir(src_dir):
+        filename = os.fsdecode(file)
+        if filename.endswith(".yaml"):
+            fn_parts = filename.split(".")[:-1]
+            with open(src_dir / filename) as yaml_stream:
+                extra_params = yaml.safe_load(yaml_stream)
+                temp = parameters
+                for part in fn_parts:
+                    temp[part] = {}
+                print(temp, part, extra_params, fn_parts[0])
+                try:
+                    temp[part] = extra_params[fn_parts[0]]
+                except KeyError as ke:
+                    print("KeyError", ke)
+            continue
+        elif filename.endswith(".gif") or filename.endswith(".png") or filename.endswith(".jpeg") or filename.endswith(".jpg"):
+            shutil.copy(src_dir / filename, build_dir / filename)
+        else:
+            continue
+
+    if "slides" in parameters:
+        if not parameters["slides"]:
+            parameters["slides"] =  {}
+        os.makedirs(build_dir / "slides", exist_ok=True)
+        for file in os.listdir(src_dir / "slides"):
+            filename = os.fsdecode(file)
+            base = filename.rsplit(".", 1)[0]
+            if filename.endswith(".gif") or filename.endswith(".png") or filename.endswith(".jpeg") or filename.endswith(".jpg"):
+                shutil.copy(src_dir / "slides" / filename, build_dir / "slides" / filename)
+                if base not in parameters["slides"]:
+                    parameters["slides"][base] = {}
+                parameters["slides"][base]["img"] = f"slides/{filename}"
+                if "txt" not in parameters["slides"][base]:
+                    parameters["slides"][base]["txt"] = base.replace("_", " ")
+
+    print("Parameters:", parameters)
+    print("Generating index.html from index.html.j2")
+    with open(build_dir / "index.html", "w") as fh:
         fh.write(env.get_template("index.html.j2").render(conf | parameters))
 
+    if "menu" in parameters:
+        for menuitem in parameters["menu"]:
+            if "link" in menuitem:
+                link = menuitem["link"]
+                if link.startswith("/") and link.endswith(".html"):
+                    # Local link, and not the index
+                    name = link[1:].rsplit(".", 1)[0]
+                    template = "index"
+                    data = parameters.get(name, {}).get("data",  {})
+                    if "title" not in data:
+                        data["title"] = menuitem["title"]
+                    print(f"Generating {name}.html from {template}.html.j2 with data:", data)
+                    if name in parameters:
+                        if "template" in parameters[name]:
+                            template = parameters[name]["template"]
+                        with open(build_dir / f"{name}.html", "w") as fh:
+                            fh.write(env.get_template(f"{template}.html.j2").render(conf | parameters | data))

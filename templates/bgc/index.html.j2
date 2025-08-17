@@ -76,12 +76,22 @@
 <body>
 
   <header>
+    {% if header is defined %}
+      {% if header.img is defined %}
+      <img src="{{header.img}}" alt="{{ header.txt if header.txt is defined else title }}">
+      {% elif header.txt is defined %}
+      <h1>{{ header.txt }}</h1>
+      {% else %}
+      <h1>{{ header }}</h1>
+      {% endif %}
+    {% else %}
     <h1>{{ title }}</h1>
+    {% endif %}
   </header>
 
   <nav>
     {% for menuitem in menu %}
-    <a href="{{ menuitem.link }}">{{ menuitem.title }}</a>
+    <a href="{{ menuitem.link }}"{% if menuitem.target is defined %} target="{{ menuitem.target }}"{% endif %}>{{ menuitem.title }}</a>
     {% endfor %}
   </nav>
 
@@ -89,9 +99,15 @@
     <!-- Left Column: Slideshow -->
     <div class="left-column">
       <div class="slideshow">
-        <img class="slides" src="https://via.placeholder.com/600x300?text=Slide+1" alt="Slide 1">
-        <img class="slides" src="https://via.placeholder.com/600x300?text=Slide+2" alt="Slide 2">
-        <img class="slides" src="https://via.placeholder.com/600x300?text=Slide+3" alt="Slide 3">
+        {% for name, slide in slides.items() %}
+          {% if slide.link is defined %}
+          <a href="{{ slide.link }}">
+          {% endif %}
+          <img class="slides" src="{{ slide.img }}" alt="{{ slide.txt }}">
+          {% if slide.link is defined %}
+          </a>
+          {% endif %}
+        {% endfor %}
       </div>
     </div>
 
@@ -127,7 +143,7 @@
       slideIndex++;
       if (slideIndex > slides.length) { slideIndex = 1; }
       slides[slideIndex - 1].style.display = "block";
-      setTimeout(showSlides, 3000); // Change slide every 3 seconds
+      setTimeout(showSlides, 5000); // Change slide every 5 seconds
     }
   </script>
 
