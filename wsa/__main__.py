@@ -59,7 +59,7 @@ for arg in sys.argv[1:]:
             ignore_parameter = True
             continue
         if parameter:
-            help(message=f"You need to specify a value for --{parameter}.", rc=1)
+            help(message=f"You need to specify a value for --{parameter}.", args=args, rc=1)
         parameter = arg[2:].lower()
     else:
         if parameter:

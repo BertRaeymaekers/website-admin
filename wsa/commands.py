@@ -50,10 +50,22 @@ def pull(args):
 
 
 def build(args):
+    build = True
     if "pull" in args:
+        build = False
         conf, fetch_info = pull(args)
+        if fetch_info[0].old_commit:
+            print("Nothing changed.")
+            build = True
+        elif "force" in args:
+            build = True
     else:
         conf = read_configuration(args)
+    
+    if not build:
+        print("Nothing changed upon pull, so not building. Override with the --force flag.")
+        return (conf, None)
+
     src_dir = current_working_directory / "src" / conf["localdir"]
     build_dir = current_working_directory / "build" / conf["conf"]
     os.makedirs(build_dir, exist_ok=True)
@@ -96,6 +108,9 @@ def build(args):
 
     print("Parameters:", parameters)
     print("Generating index.html from index.html.j2")
+    with open(build_dir / "style.css", "w") as fh:
+        fh.write(env.get_template("style.css.j2").render(conf | parameters))
+    
     with open(build_dir / "index.html", "w") as fh:
         fh.write(env.get_template("index.html.j2").render(conf | parameters))
 

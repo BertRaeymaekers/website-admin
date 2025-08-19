@@ -1,101 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>{{ title }}</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-    }
+{% extends "html.j2" %}
 
-    header {
-      background-color: #333;
-      color: white;
-      padding: 20px;
-      text-align: center;
-    }
-
-    nav {
-      background-color: #444;
-      overflow: hidden;
-    }
-
-    nav a {
-      float: left;
-      display: block;
-      color: white;
-      text-align: center;
-      padding: 14px 16px;
-      text-decoration: none;
-    }
-
-    nav a:hover {
-      background-color: #666;
-    }
-
-    .container {
-      display: flex;
-      flex-wrap: wrap;
-    }
-
-    .left-column {
-      flex: 2;
-      padding: 20px;
-    }
-
-    .right-column {
-      flex: 1;
-      padding: 20px;
-      background-color: #f4f4f4;
-    }
-
-    /* Slideshow */
-    .slideshow {
-      max-width: 100%;
-      position: relative;
-    }
-
-    .slides {
-      display: none;
-      width: 100%;
-    }
-
-    .agenda h3 {
-      margin-top: 0;
-    }
-
-    /* Responsive */
-    @media screen and (max-width: 768px) {
-      .container {
-        flex-direction: column;
-      }
-    }
-  </style>
-</head>
-<body>
-
-  <header>
-    {% if header is defined %}
-      {% if header.img is defined %}
-      <img src="{{header.img}}" alt="{{ header.txt if header.txt is defined else title }}">
-      {% elif header.txt is defined %}
-      <h1>{{ header.txt }}</h1>
-      {% else %}
-      <h1>{{ header }}</h1>
-      {% endif %}
-    {% else %}
-    <h1>{{ title }}</h1>
-    {% endif %}
-  </header>
-
-  <nav>
-    {% for menuitem in menu %}
-    <a href="{{ menuitem.link }}"{% if menuitem.target is defined %} target="{{ menuitem.target }}"{% endif %}>{{ menuitem.title }}</a>
-    {% endfor %}
-  </nav>
-
-  <div class="container">
+{% block content %}
     <!-- Left Column: Slideshow -->
     <div class="left-column">
       <div class="slideshow">
@@ -117,8 +22,8 @@
         {% if future is defined %}
         <h3>{{ future.title }}</h3>
         <ul>
-          <li><strong>Aug 16-Aug 17:</strong> Open Belgisch Kampioenschap Postuur &amp; Kleur Grasparkieten</li>
-          <li><strong>Sep 27:</strong> BGC dag</li>
+          <li><strong>16-17 AUG '25:</strong> Open Belgisch Kampioenschap Postuur &amp; Kleur Grasparkieten</li>
+          <li><strong>27 SEP '25:</strong> Belgian Budgerigar Fest</li>
         </ul>
         {% endif %}
 
@@ -129,23 +34,4 @@
         {% endif %}
       </div>
     </div>
-  </div>
-
-  <script>
-    let slideIndex = 0;
-    showSlides();
-
-    function showSlides() {
-      let slides = document.getElementsByClassName("slides");
-      for (let i = 0; i < slides.length; i++) {
-        slides[i].style.display = "none";
-      }
-      slideIndex++;
-      if (slideIndex > slides.length) { slideIndex = 1; }
-      slides[slideIndex - 1].style.display = "block";
-      setTimeout(showSlides, 5000); // Change slide every 5 seconds
-    }
-  </script>
-
-</body>
-</html>
+{% endblock %}
