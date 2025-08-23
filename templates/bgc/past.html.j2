@@ -1,0 +1,22 @@
+{% extends "html.j2" %}
+
+{% block content %}
+    <div class="left-column">
+      <h1>{{ title }}</h1>
+      {% if body is defined %}{{ body|safe }}{% endif %}
+      {% if slides is defined %}
+      <h2>Foto's</h2>
+      <div class="slideshow">
+        {% for slide_conf in slides %}
+          {% if slide_conf.link is defined %}
+          <a href="{{ slide_conf.link }}">
+          {% endif %}
+          <img class="slides" src="../img/{{ slide_conf.img }}" alt="{{ slide_conf.txt }}">
+          {% if slide_conf.link is defined %}
+          </a>
+          {% endif %}
+        {% endfor %}
+      </div>
+      {% endif %}
+    </div>
+{% endblock %}

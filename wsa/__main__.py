@@ -2,7 +2,7 @@ from collections import defaultdict
 from pathlib import Path
 import sys
 
-from wsa.commands import build, conf, pull
+from wsa.commands import build, conf, pull, serve
 
 
 WSA = str(Path(__file__).parent.name)
@@ -12,23 +12,27 @@ USAGE_DEFAULT = f"""USAGE:
 """
 
 USAGE = {
-    "pull": f"""         {WSA} pull --conf <conf>
+    "pull": f"""        {WSA} pull --conf <conf>
             --conf <conf>: Name of the configuration.
     """,
     "conf": f"""        {WSA} conf [--list] [--conf <conf>]
             --list: List all the configurations.
             --conf <conf>: Name of the configuration.
     """,
-    "build": f"""        {WSA} conf [--list] [--conf <conf>]
+    "build": f"""        {WSA} build [--list] [--conf <conf>]
+            --conf <conf>: Name of the configuration.
+    """,
+    "serve": f"""        {WSA} serve [--conf <conf>]
             --conf <conf>: Name of the configuration.
     """,
 }
 
 
 COMMANDS = {
-    "conf": (conf, "Check the configuration"),
-    "pull": (pull, "Pull the latest version from the git repo"),
-    "build": (build, "Build the new webstie"),
+    "conf": (conf, "Check the configuration."),
+    "pull": (pull, "Pull the latest version from the git repo."),
+    "build": (build, "Build the new website."),
+    "serve": (serve, "Serve the website locally."),
 }
 
 

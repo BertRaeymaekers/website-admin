@@ -5,6 +5,7 @@ directadmin-cli==0.1.5
 gitdb==4.0.12
 GitPython==3.1.44
 idna==3.10
+markdown==3.8.2
 packaging==25.0
 pydantic==2.11.4
 pydantic_core==2.33.2

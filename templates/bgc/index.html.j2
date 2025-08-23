@@ -30,6 +30,13 @@
         {% if past is defined %}
         <h3>{{ past.title }}</h3>
         <ul>
+        {% for page in past.pages %}
+          {% if loop.index < 10 %}
+            <li>{{ format_date(page.from) }}{% if page.to is defined %} - {{ format_date(page.to) }}{% endif %}: <a href="{{ page.link }}">{{ page.title }}</a></li>
+          {% elif loop.index == 10 %}
+            <p><a href="/past.html">Meer...</a></p>
+          {% endif %}
+        {% endfor %}
         </ul>
         {% endif %}
       </div>

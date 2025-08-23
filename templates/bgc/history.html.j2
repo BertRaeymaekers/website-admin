@@ -4,22 +4,8 @@
     <div class="left-column">
       <div>
         <h1>{{ title }}</h1>
-        {% for contactinfo_item in contactinfo %}
-          {% for title, contacts in contactinfo_item.items() %}
-            <h2>{{ title }}</h2>
-            <table class="listing">
-              <tbody>
-                {% for contact, details in contacts.items() %}
-                  <tr>
-                    <td>{{ contact }}</td>
-                    <td>{{ details.roles|default([])|join("<br />")|safe }}</td>
-                    <td>{{ details.tel|default("") }}</td>
-                    <td>{{ details.email|default("") }}</td>
-                  </tr>
-                {% endfor %}
-              </tbody>
-            </table>
-          {% endfor %}
+        {% for page in past.pages %}
+          <p>{{ format_date(page.from) }} - {{ format_date(page.to) }}: <a href="{{ page.link }}">{{ page.title }}</a></p>
         {% endfor %}
       </div>
     </div>
