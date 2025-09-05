@@ -1,0 +1,20 @@
+{% extends "html.j2" %}
+
+{% block content %}
+    <div class="left-column">
+      <div>
+        <h1>{{ title }}</h1>
+        {% if body is defined %}
+        {{ body|safe }}
+        {% endif %}
+        {% if downloads is defined %}
+        <h2>Downloads</h2>
+        <ul>
+          {% for title, link in downloads.items() %}
+            <li><a href="{{link}}">{{title}}</a></li>
+          {% endfor %}
+        </ul>
+        {% endif %}
+      </div>
+    </div>
+{% endblock %}

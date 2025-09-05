@@ -2,6 +2,7 @@ import contextlib
 from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer, test
 import os
 from pathlib import Path
+import re
 import shutil
 import socket
 
@@ -75,6 +76,13 @@ def build(args):
     build_dir = current_working_directory / "build" / conf["conf"]
     os.makedirs(build_dir, exist_ok=True)
     env = Environment(loader = FileSystemLoader(f'templates/{conf["template"]}'))
+
+    os.makedirs(build_dir / "downloads", exist_ok=True)
+    for file in os.listdir(src_dir / "downloads"):
+        filename = os.fsdecode(file)
+        base = filename.rsplit(".", 1)[0]
+        shutil.copy(src_dir / "downloads" / filename, build_dir / "downloads" / filename)
+
     parameters = {}
     for file in os.listdir(src_dir):
         filename = os.fsdecode(file)
@@ -82,12 +90,25 @@ def build(args):
             fn_parts = filename.split(".")[:-1]
             with open(src_dir / filename) as yaml_stream:
                 extra_params = yaml.safe_load(yaml_stream)
+                downloads = {}
+                if fn_parts[0] in extra_params and "downloads" in extra_params[fn_parts[0]]:
+                    pattern = re.compile(extra_params[fn_parts[0]]["downloads"]["regex"])
+                    for download_file in sorted(os.listdir(build_dir / "downloads"), reverse=True):
+                        if pattern.match(download_file):
+                            downloads[download_file] = f"/downloads/{download_file}"
                 temp = parameters
                 for part in fn_parts:
                     temp[part] = {}
+                    if downloads:
+                        if "data" not in extra_params[part]:
+                            extra_params[part]["data"] = {}
+                        extra_params[part]["data"]["downloads"] = downloads
+                print("###", filename, "###")
                 print(temp, part, extra_params, fn_parts[0])
+                print("###", "---", "###")
                 try:
                     temp[part] = extra_params[fn_parts[0]]
+                    print(temp[part])
                 except KeyError as ke:
                     print("KeyError", ke)
             continue
@@ -118,7 +139,7 @@ def build(args):
         base = filename.rsplit(".", 1)[0]
         if filename.endswith(".gif") or filename.endswith(".png") or filename.endswith(".jpeg") or filename.endswith(".jpg"):
             shutil.copy(src_dir / "img" / filename, build_dir / "img" / filename)
-    
+
     past_dir = parameters.get("past", {}).get("folder", "past")
     future_dir = parameters.get("future", {}).get("folder", "future")
     os.makedirs(build_dir / past_dir, exist_ok=True)
@@ -143,6 +164,7 @@ def build(args):
                         template = env.get_template("past.html.j2")
                         register_in_template(template)
                         fh.write(template.render(conf | parameters | event_params))
+
 
     print("Generating index.html from index.html.j2")
     with open(build_dir / "style.css", "w") as fh:
