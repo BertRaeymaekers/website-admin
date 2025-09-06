@@ -4,7 +4,7 @@
     <!-- Left Column: Slideshow -->
     <div class="left-column">
       <div class="slideshow">
-        {% for name, slide in slides.items() %}
+        {% for slide in slides %}
           {% if slide.link is defined %}
           <a href="{{ slide.link }}">
           {% endif %}

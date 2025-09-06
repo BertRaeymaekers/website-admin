@@ -118,18 +118,15 @@ def build(args):
             continue
 
     if not parameters["slides"]:
-        parameters["slides"] =  {}
+        parameters["slides"] =  []
     os.makedirs(build_dir / "slides", exist_ok=True)
     for file in os.listdir(src_dir / "slides"):
         filename = os.fsdecode(file)
         base = filename.rsplit(".", 1)[0]
         if filename.endswith(".gif") or filename.endswith(".png") or filename.endswith(".jpeg") or filename.endswith(".jpg"):
             shutil.copy(src_dir / "slides" / filename, build_dir / "slides" / filename)
-            if base not in parameters["slides"]:
-                parameters["slides"][base] = {}
-            parameters["slides"][base]["img"] = f"slides/{filename}"
-            if "txt" not in parameters["slides"][base]:
-                parameters["slides"][base]["txt"] = base.replace("_", " ")
+            slide = {"img": f"slides/{filename}", "txt": base.replace("_", " ")}
+            parameters["slides"].append(slide)
 
     print("Parameters:", parameters)
 
