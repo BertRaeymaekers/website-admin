@@ -152,16 +152,32 @@ def build(args):
             fn_parts = filename.split(".")[:-1]
             with open(src_dir / "events" / filename) as yaml_stream:
                 event_params = yaml.safe_load(yaml_stream)
+                html_filename = f"{filename.rsplit(".", 1)[0]}.html"
                 if "body" in event_params or "slides" in event_params:
-                    html_filename = f"{filename.rsplit(".", 1)[0]}.html"
                     parameters["past"]["pages"].append(event_params | {"link": f"{past_dir}/{html_filename}"})
                     for md in ["body", "announcement"]:
                         if md in event_params:
                             event_params[md] = markdown.markdown(event_params[md]).replace("<img ", '<img class="fullwidth" ')
-                            print(event_params)
                     print(f"Generating {past_dir}/{html_filename} from past.html.j2")
                     with open(build_dir / past_dir / html_filename, "w") as fh:
                         template = env.get_template("past.html.j2")
+                        register_in_template(template)
+                        fh.write(template.render(conf | parameters | event_params))
+                if "announcement" in event_params:
+                    future_item_params = {"link": f"{future_dir}/{html_filename}"}
+                    if "download" in event_params:
+                        future_item_params["download"] = event_params["download"]
+                    parameters["future"]["pages"].append(event_params | future_item_params)
+                    for md in ["announcement"]:
+                        if md in event_params:
+                            event_params[md] = markdown.markdown(event_params[md]).replace("<img ", '<img class="fullwidth" ')
+                    for missing in ["slides"]:
+                        # Overwriting some parameters from the main configuration with empties.
+                        if missing not in event_params:
+                            event_params[missing] = {}
+                    print(f"Generating {future_dir}/{html_filename} from future.html.j2")
+                    with open(build_dir / future_dir / html_filename, "w") as fh:
+                        template = env.get_template("future.html.j2")
                         register_in_template(template)
                         fh.write(template.render(conf | parameters | event_params))
 

@@ -22,17 +22,22 @@
         {% if future is defined %}
         <h3>{{ future.title }}</h3>
         <ul>
-          <li><strong>16-17 AUG '25:</strong> Open Belgisch Kampioenschap Postuur &amp; Kleur Grasparkieten</li>
-          <li><strong>27 SEP '25:</strong> Belgian Budgerigar Fest</li>
+        {% for page in future.pages|sort(attribute="link", reverse=true) %}
+          {% if loop.index < 10 %}
+            <li><b>{{ format_date(page.from) }}{% if page.to is defined %} - {{ format_date(page.to) }}{% endif %}</b>: <a href="{{ page.link }}">{{ page.title }}</a>{% if page.download is defined %} <a href="{{ page.download.link }}">{{ page.download.txt }}</a>{% endif %}{% if page.title_bold is defined %} <b>{{ page.title_bold }}</b>{% endif %}</li>
+          {% elif loop.index == 10 %}
+            <p><a href="/past.html">Meer...</a></p>
+          {% endif %}
+        {% endfor %}
         </ul>
         {% endif %}
 
         {% if past is defined %}
         <h3>{{ past.title }}</h3>
         <ul>
-        {% for page in past.pages %}
+        {% for page in past.pages|sort(attribute="link", reverse=true) %}
           {% if loop.index < 10 %}
-            <li>{{ format_date(page.from) }}{% if page.to is defined %} - {{ format_date(page.to) }}{% endif %}: <a href="{{ page.link }}">{{ page.title }}</a></li>
+            <li><b>{{ format_date(page.from) }}{% if page.to is defined %} - {{ format_date(page.to) }}{% endif %}</b>: <a href="{{ page.link }}">{{ page.title }}</a></li>
           {% elif loop.index == 10 %}
             <p><a href="/past.html">Meer...</a></p>
           {% endif %}
