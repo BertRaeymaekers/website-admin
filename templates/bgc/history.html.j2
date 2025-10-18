@@ -4,8 +4,8 @@
     <div class="left-column">
       <div>
         <h1>{{ title }}</h1>
-        {% for page in past.pages %}
-          <p>{{ format_date(page.from) }} - {{ format_date(page.to) }}: <a href="{{ page.link }}">{{ page.title }}</a></p>
+        {% for page in past.pages|sort(attribute="link", reverse=true) %}
+          <p><b>{{ format_date(page.from) }} - {{ format_date(page.to) }}</b>: <a href="{{ page.link }}">{{ page.title }}</a></p>
         {% endfor %}
       </div>
     </div>

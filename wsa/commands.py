@@ -1,5 +1,6 @@
 import contextlib
 from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer, test
+import json
 import os
 from pathlib import Path
 import re
@@ -9,9 +10,12 @@ import socket
 from git import Repo
 from jinja2 import Environment, FileSystemLoader
 import markdown
+from markdown.extensions.tables import TableExtension
 import yaml
 
 from  wsa.configuration import current_working_directory, CONF_DIR, read_configuration
+from wsa.lib.directadmin import DirectAdminAPIClient
+from wsa.lib.filesystem import ComparePaths
 from wsa.lib.jinja2_helpers import register_in_template
 
 
@@ -154,7 +158,7 @@ def build(args):
                     parameters["past"]["pages"].append(event_params | {"link": f"{past_dir}/{html_filename}"})
                     for md in ["body", "announcement"]:
                         if md in event_params:
-                            event_params[md] = markdown.markdown(event_params[md]).replace("<img ", '<img class="fullwidth" ')
+                            event_params[md] = markdown.markdown(event_params[md], extensions=[TableExtension(use_align_attribute=True)]).replace("<img ", '<img class="fullwidth" ')
                     print(f"Generating {past_dir}/{html_filename} from past.html.j2")
                     with open(build_dir / past_dir / html_filename, "w") as fh:
                         template = env.get_template("past.html.j2")
@@ -167,7 +171,7 @@ def build(args):
                     parameters["future"]["pages"].append(event_params | future_item_params)
                     for md in ["announcement"]:
                         if md in event_params:
-                            event_params[md] = markdown.markdown(event_params[md]).replace("<img ", '<img class="fullwidth" ')
+                            event_params[md] = markdown.markdown(event_params[md], extensions=[TableExtension(use_align_attribute=True)]).replace("<img ", '<img class="fullwidth" ')
                     for missing in ["slides"]:
                         # Overwriting some parameters from the main configuration with empties.
                         if missing not in event_params:
@@ -256,3 +260,16 @@ def publish(args):
     else:
         conf = read_configuration(args)
         build_dir = current_working_directory / "build" / conf["conf"]
+    client = DirectAdminAPIClient(
+        server=conf["api-url"],
+        username=conf["api-username"],
+        password=conf["api-password"],
+        ssl=True,
+        user_agent="website-admin/1.0"
+    )
+    print("User config:")
+    print(json.dumps(client.get_user_config(conf["api-username"]), indent=3))
+    print("User usage:")
+    print(json.dumps(client.get_user_usage(conf["api-username"]), indent=3))
+    compare = ComparePaths(build_dir, client)
+    compare.sync()

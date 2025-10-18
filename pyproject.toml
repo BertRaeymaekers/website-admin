@@ -4,4 +4,4 @@ version = "0.1.0"
 description = "A collection of scripts to manage a simple static website"
 authors = [{ name = "Bert Raeymaekers", email = "website-admin-project@schilduil.org" }]
 requires-python = ">= 3.12"
-dependencies = ["GitPython", "directadmin-cli", "jinja2", "pyyaml", "markdown"]
+dependencies = ["GitPython", "jinja2", "pyyaml", "markdown"]
