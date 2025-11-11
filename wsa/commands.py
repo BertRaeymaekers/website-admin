@@ -1,8 +1,7 @@
 import contextlib
+import datetime
 from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer, test
-import json
 import os
-from pathlib import Path
 import re
 import shutil
 import socket
@@ -14,8 +13,6 @@ from markdown.extensions.tables import TableExtension
 import yaml
 
 from  wsa.configuration import current_working_directory, CONF_DIR, read_configuration
-from wsa.lib.directadmin import DirectAdminAPIClient
-from wsa.lib.filesystem import ComparePaths
 from wsa.lib.jinja2_helpers import register_in_template
 
 
@@ -41,7 +38,7 @@ def conf(args):
 def pull(args):
     conf = read_configuration(args)
     src_dir = current_working_directory / "src" / conf["localdir"]
-    repo_url = conf["gitrepo"]
+    repo_url = conf["sourcerepo"]
     os.makedirs(src_dir, exist_ok=True)
     print("Local directory:", src_dir)
     print("Git repo URL:", repo_url)
@@ -215,11 +212,13 @@ def build(args):
 
 def serve(args):
     if "build" in args:
-        build = False
-        conf, build_dir = build(args)
+        conf, build_dir = build(args | {"pull": True})
     else:
         conf = read_configuration(args)
         build_dir = current_working_directory / "build" / conf["conf"]
+    if not build_dir:
+        print("Build didn't yield anything new. Not serving.")
+        return
 
     class DualStackServer(ThreadingHTTPServer):
         def server_bind(self):
@@ -256,20 +255,22 @@ def serve(args):
 
 def publish(args):
     if "build" in args:
-        conf, build_dir = build(args)
+        conf, build_dir = build(args | {"pull": True})
     else:
         conf = read_configuration(args)
         build_dir = current_working_directory / "build" / conf["conf"]
-    client = DirectAdminAPIClient(
-        server=conf["api-url"],
-        username=conf["api-username"],
-        password=conf["api-password"],
-        ssl=True,
-        user_agent="website-admin/1.0"
-    )
-    print("User config:")
-    print(json.dumps(client.get_user_config(conf["api-username"]), indent=3))
-    print("User usage:")
-    print(json.dumps(client.get_user_usage(conf["api-username"]), indent=3))
-    compare = ComparePaths(build_dir, client)
-    compare.sync()
+    if not build_dir:
+        print("Build didn't yield anything new. Not publishing.")
+        return
+    repo_url = conf["siterepo"] 
+    print("Local build directory:", build_dir)
+    print("Git site repo URL:", repo_url)
+    # TODO If git is not set up locally, do it first.
+    repo = Repo(build_dir)
+    repo.git.add(".")
+    commit_output = repo.index.commit(f"Autocommit {datetime.datetime.now().isoformat()}")
+    print("Commit:", commit_output)
+    origin = repo.remote(name="origin")
+    push_output = origin.push()
+    # TODO: Nicer output
+    print(push_output)

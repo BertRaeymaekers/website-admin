@@ -8,7 +8,7 @@ from wsa.commands import build, conf, publish, pull, serve
 WSA = str(Path(__file__).parent.name)
 
 USAGE_DEFAULT = f"""USAGE:
-    {WSA} --help
+    {WSA} [COMMANDS] [--conf <conf>] --help
 """
 
 USAGE = {
@@ -21,12 +21,15 @@ USAGE = {
     """,
     "build": f"""    {WSA} build [--list] [--conf <conf>]
             --conf <conf>: Name of the configuration.
+            --pull: Pull from the source first.
     """,
     "serve": f"""    {WSA} serve [--conf <conf>]
             --conf <conf>: Name of the configuration.
+            --build: First build (implies --pulll on build)
     """,
     "publish": f"""    {WSA} publish [--conf <conf>]
             --conf <conf>: Name of the configuration.
+            --build: First build (implies --pulll on build)
     """,
 }
 
@@ -35,8 +38,18 @@ COMMANDS = {
     "conf": (conf, "Check the configuration."),
     "pull": (pull, "Pull the latest version from the git repo."),
     "build": (build, "Build the new website."),
+    "build.pull": (build, "Build the new website after a pull."),
+    "pull.build": (build, "Build the new website after a pull."),
     "serve": (serve, "Serve the website locally."),
+    "serve.build": (serve, "Serve the website locally after a pull and build."),
+    "serve.build.pull": (serve, "Serve the website locally after a pull and build."),
+    "build.serve": (serve, "Serve the website locally after a pull and build."),
+    "pull.build.serve": (serve, "Serve the website locally after a pull and build."),
     "publish": (publish, "Publish the website."),
+    "publish.build": (publish, "Publish the new website after a pull and build."),
+    "publish.build.pull": (publish, "Publish the new website after a pull and build."),
+    "build.publish": (publish, "Publish the new website after a pull and build."),
+    "pull.build.publish": (publish, "Publish the new website after a pull and build."),
 }
 
 
@@ -75,6 +88,7 @@ for arg in sys.argv[1:]:
             parameter = ""
         else:
             args[""].append(arg)
+            args[arg] = True
 if parameter:
     args[parameter].append(arg)
 
