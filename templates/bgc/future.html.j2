@@ -3,12 +3,19 @@
 {% block content %}
     <div class="left-column">
       <h1>{{ title }}</h1>
+      {% if body is defined %}
+      <h2>Terugblik/Rétrospective: <a href="/past/{{ html_filename }}">hier/ici</a>.</h2>
+      {% endif %}
       {% if announcement is defined %}{{ announcement|safe }}{% endif %}
       {% if download is defined %}
-      <div class="download">
-        <b>Download</b>: <a href="/downloads/{{ download.link }}">{{ download.txt }}</a>
-      </div>
+      {% set downloads = [download] %}
       {% endif %}
+      {% for download in downloads %}
+      <h2>Downloads</h2>
+      <ul class="card-list">
+        <li class="card"><a href="/downloads/{{ download.link }}">{{ download.txt }}</a></li>
+      </ul>
+      {% endfor %}
       {% if slides  %}
       <h2>Foto's</h2>
       <div class="slideshow">

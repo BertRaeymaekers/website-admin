@@ -9,9 +9,9 @@
         {% endif %}
         {% if downloads is defined %}
         <h2>Downloads</h2>
-        <ul>
+        <ul class="card-list">
           {% for title, link in downloads.items() %}
-            <li><a href="{{link}}">{{title}}</a></li>
+            <li class="card"><a href="{{link}}">{{title}}</a></li>
           {% endfor %}
         </ul>
         {% endif %}

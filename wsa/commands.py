@@ -149,8 +149,8 @@ def build(args):
         if filename.endswith(".yaml"):
             fn_parts = filename.split(".")[:-1]
             with open(src_dir / "events" / filename) as yaml_stream:
-                event_params = yaml.safe_load(yaml_stream)
                 html_filename = f"{filename.rsplit(".", 1)[0]}.html"
+                event_params = yaml.safe_load(yaml_stream) | {"html_filename": html_filename}
                 if "body" in event_params or "slides" in event_params:
                     parameters["past"]["pages"].append(event_params | {"link": f"{past_dir}/{html_filename}"})
                     for md in ["body", "announcement"]:
