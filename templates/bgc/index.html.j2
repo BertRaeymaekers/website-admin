@@ -1,6 +1,13 @@
 {% extends "html.j2" %}
 
 {% block content %}
+
+    {%if welcome %}
+    <div class="left-column">
+       {{ welcome }}
+    </div>
+    {% endif %}
+
     <!-- Left Column: Slideshow -->
     <div class="left-column">
       <div class="slideshow">
