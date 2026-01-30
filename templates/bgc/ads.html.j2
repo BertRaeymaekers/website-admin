@@ -1,0 +1,24 @@
+{% extends "html.j2" %}
+
+{% block content %}
+    <div class="left-column">
+      <div>
+        <h1>{{ title }}</h1>
+
+        {% if body is defined %}
+        <div>
+          {{ body|safe }}
+        </div>
+        {% endif %}
+
+        {% if images is defined %}
+        <div>
+          {% for title, link in images.items() %}
+            <img title="{{title}}" src="{{link}}">
+          {% endfor %}
+        {% endif %}
+        </div>
+
+      </div>
+    </div>
+{% endblock %}

@@ -92,11 +92,17 @@ def build(args):
             with open(src_dir / filename) as yaml_stream:
                 extra_params = yaml.safe_load(yaml_stream)
                 downloads = {}
+                images = {}
                 if fn_parts[0] in extra_params and "downloads" in extra_params[fn_parts[0]]:
                     pattern = re.compile(extra_params[fn_parts[0]]["downloads"]["regex"])
                     for download_file in sorted(os.listdir(build_dir / "downloads"), reverse=True):
                         if pattern.match(download_file):
                             downloads[download_file] = f"/downloads/{download_file}"
+                if fn_parts[0] in extra_params and "images" in extra_params[fn_parts[0]]:
+                    pattern = re.compile(extra_params[fn_parts[0]]["images"]["regex"])
+                    for image_file in sorted(os.listdir(build_dir / "img"), reverse=True):
+                        if pattern.match(image_file):
+                            images[image_file] = f"/img/{image_file}"
                 temp = parameters
                 for part in fn_parts:
                     temp[part] = {}
@@ -104,12 +110,16 @@ def build(args):
                         if "data" not in extra_params[part]:
                             extra_params[part]["data"] = {}
                         extra_params[part]["data"]["downloads"] = downloads
+                    if images:
+                        if "data" not in extra_params[part]:
+                            extra_params[part]["data"] = {}
+                        extra_params[part]["data"]["images"] = images
                 print("###", filename, "###")
                 print(temp, part, extra_params, fn_parts[0])
                 print("###", "---", "###")
                 try:
                     temp[part] = extra_params[fn_parts[0]]
-                    print(temp[part])
+                    print(part, parameters[part])
                 except KeyError as ke:
                     print("KeyError", ke)
             continue
@@ -130,6 +140,8 @@ def build(args):
             parameters["slides"].append(slide)
 
     print("Parameters:", parameters)
+    print("Menu", parameters["menu"])
+    print("Entries", ",".join(parameters.keys()))
 
     os.makedirs(build_dir / "img", exist_ok=True)
     for file in os.listdir(src_dir / "img"):
