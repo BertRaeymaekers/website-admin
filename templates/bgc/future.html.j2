@@ -13,7 +13,7 @@
       {% for download in downloads %}
       <h2>Downloads</h2>
       <ul class="card-list">
-        <li class="card"><a href="/downloads/{{ download.link }}">{{ download.txt }}</a></li>
+        <li class="card"><a href="{{ download.link }}">{{ download.txt }}</a></li>
       </ul>
       {% endfor %}
       {% if slides  %}
