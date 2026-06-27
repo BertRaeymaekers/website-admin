@@ -1,0 +1,1620 @@
+
+* {
+        PADDING-RIGHT: 0px;
+	PADDING-LEFT: 0px;
+	PADDING-BOTTOM: 0px;
+	MARGIN: 0px;
+	PADDING-TOP: 0px;
+}
+
+@font-face{
+	font-family: "Harabara";
+	src: url("/fonts/Harabara.eot");
+	src: local("Harabara"), url("/fonts/Harabara.ttf") format("truetype");
+}	
+
+@font-face {
+	font-family:"Avdira";
+	src: url("/fonts/Avdira_R.eot") format("eot"),
+	     url("/fonts/Avdira_R.woff") format("woff"),
+	     url("/fonts/Avdira_R.ttf") format("truetype"),
+	     url("/fonts/Avdira_R.svg#Avdira") format("svg");
+}
+
+HTML {
+	BORDER-TOP: 0px;
+	BORDER-LEFT: 0px;
+	BORDER-RIGHT: 0px;
+	BORDER-BOTTOM: 0px;
+	PADDING-RIGHT: 0px;
+	PADDING-LEFT: 0px;
+	BACKGROUND-POSITION: top middle;
+	PADDING-BOTTOM: 0px;
+	MARGIN: 0px;
+	COLOR: black;
+	PADDING-TOP: 0px;
+	FONT-FAMILY: Avdira, Anaktoria, Andika, Palatino Linotype, Tahoma, Harabara, Bitstream Vera Sans, Verdana, Arial, Georgia, Sans Serif;
+	MARGIN: 0px;
+}
+
+.print {
+  display: none;
+}
+
+BODY {
+
+	BACKGROUND: white;
+        BACKGROUND-IMAGE: url('header.png');
+        BACKGROUND-REPEAT: repeat-x;
+        BACKGROUND-POSITION: top left;
+	BORDER: 0px;
+	PADDING: 0px;
+	MARGIN: 0px;
+
+}
+
+H1,H2 {
+        FONT-FAMILY: Segoe Print, Harabara;
+}
+
+H3 {
+        FONT-FAMILY: Segoe Print, Harabara
+	PADDING-TOP: 12pt;
+}
+
+A {
+  TEXT-DECORATION: underline;
+}
+
+A:hover {
+  COLOR: blue;
+	TEXT-DECORATION: underline;
+}
+
+INPUT {
+	BORDER-RIGHT: 1px solid;
+	BORDER-TOP: 1px solid;
+	BORDER-LEFT: 1px solid;
+	BORDER-BOTTOM: 1px solid;
+}
+
+P {
+  PADDING-TOP: 5px;
+}
+
+PRE {
+	PADDING: 0px;
+	MARGIN: 0px;
+}
+
+UL {
+  PADDING-LEFT: 15pt;
+	LIST-STYLE-POSITION: outside;
+}
+
+#content {
+  BORDER: 0px;
+	PADDING: 0px;
+	MARGIN: 0px;
+}
+
+#middle {
+	MARGIN: 0px;
+	WIDTH: 100%;
+}
+
+#header {
+        HEIGHT: 14Opx;
+	FONT-SIZE: 50px;
+	TEXT-ALIGN: left;
+}
+
+#header .subtitle {
+  FONT-SIZE: 20px;
+  FONT-FAMILY: Segoe Print, Harabara;
+}
+
+#topleft {
+}
+
+#left {
+	MARGIN: 0px;
+        BACKGROUND: black;
+	BORDER-RIGHT: 0px solid;
+	PADDING-RIGHT: 5px;
+	PADDING-LEFT: 5px;
+	PADDING-BOTTOM: 0px;
+	VERTICAL-ALIGN: top;
+	WIDTH: 173px;
+	PADDING-TOP: 20px;
+}
+
+#left A {
+	COLOR: rgb(240,240,240);
+	PADDING-RIGHT: 2px;
+	PADDING-LEFT: 2px;
+	PADDING-BOTTOM: 2px;
+	PADDING-TOP: 2px;
+	FONT-VARIANT: small-caps;
+	FONT-WEIGHT: bolder;
+	TEXT-DECORATION: none;
+}
+
+#left A:hover {
+	TEXT-DECORATION: underline;
+}
+
+#body {
+        BACKGROUND-IMAGE: url('background.jpeg');
+	BACKGROUND-REPEAT: no-repeat;
+	BACKGROUND-POSITION: center center;
+	MARGIN: 0px;
+	PADDING-RIGHT: 10px;
+	PADDING-LEFT: 10px;
+	PADDING-BOTTOM: 10px;
+	VERTICAL-ALIGN: top;
+	WIDTH: auto;
+	PADDING-TOP: 10px;
+}
+
+.border TD {
+  BORDER-RIGHT: 1px solid;
+	BORDER-TOP: 1px solid;
+	BORDER-LEFT: 1px solid;
+	BORDER-BOTTOM: 1px solid;
+}
+
+#right {
+	BACKGROUND: rgb(224,0,0);
+	PADDING-RIGHT: 5px;
+	PADDING-LEFT: 5px;
+	PADDING-BOTTOM: 5px;
+	VERTICAL-ALIGN: top;
+	BORDER-LEFT: 0px solid;
+	WIDTH: 20%;
+	PADDING-TOP: 20px;
+}
+
+.block {
+	color: white;
+	PADDING-RIGHT: 5px;
+	PADDING-LEFT: 5px;
+	PADDING-BOTTOM: 5px;
+	PADDING-TOP: 5px;
+	BACKGROUND: #333333;
+	BORDER: 1px solid;
+}
+
+#footer {
+        FONT-FAMILY: Avdira, Harabara;
+	PADDING-RIGHT: 5px;
+	PADDING-LEFT: 5px;
+	BACKGROUND: yellow;
+	PADDING-BOTTOM: 2px;
+	PADDING-TOP: 2px;
+	TEXT-ALIGN: right;
+}
+
+#footer A {
+  TEXT-DECORATION: none;
+}
+
+#footer A {
+	COLOR: black;
+	FONT-VARIANT: small-caps;
+	TEXT-DECORATION: none;
+}
+
+#footer A:hover {
+	TEXT-DECORATION: underline;
+}
+
+
+
+.title {
+	FONT-FAMILY: Avdira, Harabara;
+	FONT-WEIGHT: bold;
+	FONT-VARIANT: small-caps; TEXT-DECORATION: underline;
+}
+
+.title:first-letter {
+  BACKGROUND: rgb(224,0,0);
+}
+
+.menu1_1 {
+	color: white;
+	margin: 5px;
+	margin-left: 0px;
+	background: rgb(32,32,32);
+        // background-image: url("tk_pointer_1_s.gif");
+        background-position: left;
+	border: 1px solid;
+	border-color: white;
+        background-repeat: no-repeat;
+        padding-left: 2px;
+
+}
+.menu1_2 {
+	color: white;
+	margin: 5px;
+	margin-left: 20px;
+	background: rgb(32,32,32);
+        // background-image: url("tk_pointer_2_s.gif");
+        background-position: left;
+	border: 1px solid;
+	border-color: white;
+        background-repeat: no-repeat;
+        padding-left: 2px;
+
+}
+.menu1_3 {
+	color: white;
+	margin: 5px;
+	margin-left: 40px;
+	background: rgb(32,32,32);
+        // background-image: url("tk_pointer_3_s.gif");
+        background-position: left;
+	border: 1px solid;
+	border-color: white;
+        background-repeat: no-repeat;
+        padding-left: 2px;
+
+}
+.menu1_4 {
+	color: white;
+	margin: 5px;
+	margin-left: 60px;
+	background: rgb(32,32,32);
+        // background-image: url("tk_pointer_4_s.gif");
+        background-position: left;
+	border: 1px solid;
+	border-color: white;
+        background-repeat: no-repeat;
+        padding-left: 2px;
+
+}
+.menu1_5 {
+	color: white;
+	margin: 5px;
+	margin-left: 80px;
+	background: rgb(32,32,32);
+        // background-image: url("tk_pointer_5_s.gif");
+        background-position: left;
+	border: 1px solid;
+	border-color: white;
+        background-repeat: no-repeat;
+        padding-left: 2px;
+
+}
+.menu1_6 {
+	color: white;
+	margin: 5px;
+	margin-left: 100px;
+	background: rgb(32,32,32);
+        // background-image: url("tk_pointer_6_s.gif");
+        background-position: left;
+	border: 1px solid;
+	border-color: white;
+        background-repeat: no-repeat;
+        padding-left: 2px;
+
+}
+.menu1_7 {
+	color: white;
+	margin: 5px;
+	margin-left: 120px;
+	background: rgb(32,32,32);
+        // background-image: url("tk_pointer_1_s.gif");
+        background-position: left;
+	border: 1px solid;
+	border-color: white;
+        background-repeat: no-repeat;
+        padding-left: 2px;
+
+}
+.menu1_8 {
+	color: white;
+	margin: 5px;
+	margin-left: 140px;
+	background: rgb(32,32,32);
+        // background-image: url("tk_pointer_2_s.gif");
+        background-position: left;
+	border: 1px solid;
+	border-color: white;
+        background-repeat: no-repeat;
+        padding-left: 2px;
+
+}
+.menu1_9 {
+	color: white;
+	margin: 5px;
+	margin-left: 160px;
+	background: rgb(32,32,32);
+        // background-image: url("tk_pointer_3_s.gif");
+        background-position: left;
+	border: 1px solid;
+	border-color: white;
+        background-repeat: no-repeat;
+        padding-left: 2px;
+
+}
+.menu1_10 {
+	color: white;
+	margin: 5px;
+	margin-left: 180px;
+	background: rgb(32,32,32);
+        // background-image: url("tk_pointer_4_s.gif");
+        background-position: left;
+	border: 1px solid;
+	border-color: white;
+        background-repeat: no-repeat;
+        padding-left: 2px;
+
+}
+.menu2_1 {
+	color: white;
+	margin: 5px;
+	margin-left: 0px;
+	background: rgb(32,32,32);
+        // background-image: url("tk_pointer_1_s.gif");
+        background-position: left;
+	border: 1px solid;
+	border-color: white;
+        background-repeat: no-repeat;
+        padding-left: 2px;
+
+}
+.menu2_2 {
+	color: white;
+	margin: 5px;
+	margin-left: 20px;
+	background: rgb(32,32,32);
+        // background-image: url("tk_pointer_2_s.gif");
+        background-position: left;
+	border: 1px solid;
+	border-color: white;
+        background-repeat: no-repeat;
+        padding-left: 2px;
+
+}
+.menu2_3 {
+	color: white;
+	margin: 5px;
+	margin-left: 40px;
+	background: rgb(32,32,32);
+        // background-image: url("tk_pointer_3_s.gif");
+        background-position: left;
+	border: 1px solid;
+	border-color: white;
+        background-repeat: no-repeat;
+        padding-left: 2px;
+
+}
+.menu2_4 {
+	color: white;
+	margin: 5px;
+	margin-left: 60px;
+	background: rgb(32,32,32);
+        // background-image: url("tk_pointer_4_s.gif");
+        background-position: left;
+	border: 1px solid;
+	border-color: white;
+        background-repeat: no-repeat;
+        padding-left: 2px;
+
+}
+.menu2_5 {
+	color: white;
+	margin: 5px;
+	margin-left: 80px;
+	background: rgb(32,32,32);
+        // background-image: url("tk_pointer_5_s.gif");
+        background-position: left;
+	border: 1px solid;
+	border-color: white;
+        background-repeat: no-repeat;
+        padding-left: 2px;
+
+}
+.menu2_6 {
+	color: white;
+	margin: 5px;
+	margin-left: 100px;
+	background: rgb(32,32,32);
+        // background-image: url("tk_pointer_6_s.gif");
+        background-position: left;
+	border: 1px solid;
+	border-color: white;
+        background-repeat: no-repeat;
+        padding-left: 2px;
+
+}
+.menu2_7 {
+	color: white;
+	margin: 5px;
+	margin-left: 120px;
+	background: rgb(32,32,32);
+        // background-image: url("tk_pointer_1_s.gif");
+        background-position: left;
+	border: 1px solid;
+	border-color: white;
+        background-repeat: no-repeat;
+        padding-left: 2px;
+
+}
+.menu2_8 {
+	color: white;
+	margin: 5px;
+	margin-left: 140px;
+	background: rgb(32,32,32);
+        // background-image: url("tk_pointer_2_s.gif");
+        background-position: left;
+	border: 1px solid;
+	border-color: white;
+        background-repeat: no-repeat;
+        padding-left: 2px;
+
+}
+.menu2_9 {
+	color: white;
+	margin: 5px;
+	margin-left: 160px;
+	background: rgb(32,32,32);
+        // background-image: url("tk_pointer_3_s.gif");
+        background-position: left;
+	border: 1px solid;
+	border-color: white;
+        background-repeat: no-repeat;
+        padding-left: 2px;
+
+}
+.menu2_10 {
+	color: white;
+	margin: 5px;
+	margin-left: 180px;
+	background: rgb(32,32,32);
+        // background-image: url("tk_pointer_4_s.gif");
+        background-position: left;
+	border: 1px solid;
+	border-color: white;
+        background-repeat: no-repeat;
+        padding-left: 2px;
+
+}
+.menu3_1 {
+	color: white;
+	margin: 5px;
+	margin-left: 0px;
+	background: rgb(32,32,32);
+        // background-image: url("tk_pointer_1_s.gif");
+        background-position: left;
+	border: 1px solid;
+	border-color: white;
+        background-repeat: no-repeat;
+        padding-left: 2px;
+
+}
+.menu3_2 {
+	color: white;
+	margin: 5px;
+	margin-left: 20px;
+	background: rgb(32,32,32);
+        // background-image: url("tk_pointer_2_s.gif");
+        background-position: left;
+	border: 1px solid;
+	border-color: white;
+        background-repeat: no-repeat;
+        padding-left: 2px;
+
+}
+.menu3_3 {
+	color: white;
+	margin: 5px;
+	margin-left: 40px;
+	background: rgb(32,32,32);
+        // background-image: url("tk_pointer_3_s.gif");
+        background-position: left;
+	border: 1px solid;
+	border-color: white;
+        background-repeat: no-repeat;
+        padding-left: 2px;
+
+}
+.menu3_4 {
+	color: white;
+	margin: 5px;
+	margin-left: 60px;
+	background: rgb(32,32,32);
+        // background-image: url("tk_pointer_4_s.gif");
+        background-position: left;
+	border: 1px solid;
+	border-color: white;
+        background-repeat: no-repeat;
+        padding-left: 2px;
+
+}
+.menu3_5 {
+	color: white;
+	margin: 5px;
+	margin-left: 80px;
+	background: rgb(32,32,32);
+        // background-image: url("tk_pointer_5_s.gif");
+        background-position: left;
+	border: 1px solid;
+	border-color: white;
+        background-repeat: no-repeat;
+        padding-left: 2px;
+
+}
+.menu3_6 {
+	color: white;
+	margin: 5px;
+	margin-left: 100px;
+	background: rgb(32,32,32);
+        // background-image: url("tk_pointer_6_s.gif");
+        background-position: left;
+	border: 1px solid;
+	border-color: white;
+        background-repeat: no-repeat;
+        padding-left: 2px;
+
+}
+.menu3_7 {
+	color: white;
+	margin: 5px;
+	margin-left: 120px;
+	background: rgb(32,32,32);
+        // background-image: url("tk_pointer_1_s.gif");
+        background-position: left;
+	border: 1px solid;
+	border-color: white;
+        background-repeat: no-repeat;
+        padding-left: 2px;
+
+}
+.menu3_8 {
+	color: white;
+	margin: 5px;
+	margin-left: 140px;
+	background: rgb(32,32,32);
+        // background-image: url("tk_pointer_2_s.gif");
+        background-position: left;
+	border: 1px solid;
+	border-color: white;
+        background-repeat: no-repeat;
+        padding-left: 2px;
+
+}
+.menu3_9 {
+	color: white;
+	margin: 5px;
+	margin-left: 160px;
+	background: rgb(32,32,32);
+        // background-image: url("tk_pointer_3_s.gif");
+        background-position: left;
+	border: 1px solid;
+	border-color: white;
+        background-repeat: no-repeat;
+        padding-left: 2px;
+
+}
+.menu3_10 {
+	color: white;
+	margin: 5px;
+	margin-left: 180px;
+	background: rgb(32,32,32);
+        // background-image: url("tk_pointer_4_s.gif");
+        background-position: left;
+	border: 1px solid;
+	border-color: white;
+        background-repeat: no-repeat;
+        padding-left: 2px;
+
+}
+.menu4_1 {
+	color: white;
+	margin: 5px;
+	margin-left: 0px;
+	background: rgb(32,32,32);
+        // background-image: url("tk_pointer_1_s.gif");
+        background-position: left;
+	border: 1px solid;
+	border-color: white;
+        background-repeat: no-repeat;
+        padding-left: 2px;
+
+}
+.menu4_2 {
+	color: white;
+	margin: 5px;
+	margin-left: 20px;
+	background: rgb(32,32,32);
+        // background-image: url("tk_pointer_2_s.gif");
+        background-position: left;
+	border: 1px solid;
+	border-color: white;
+        background-repeat: no-repeat;
+        padding-left: 2px;
+
+}
+.menu4_3 {
+	color: white;
+	margin: 5px;
+	margin-left: 40px;
+	background: rgb(32,32,32);
+        // background-image: url("tk_pointer_3_s.gif");
+        background-position: left;
+	border: 1px solid;
+	border-color: white;
+        background-repeat: no-repeat;
+        padding-left: 2px;
+
+}
+.menu4_4 {
+	color: white;
+	margin: 5px;
+	margin-left: 60px;
+	background: rgb(32,32,32);
+        // background-image: url("tk_pointer_4_s.gif");
+        background-position: left;
+	border: 1px solid;
+	border-color: white;
+        background-repeat: no-repeat;
+        padding-left: 2px;
+
+}
+.menu4_5 {
+	color: white;
+	margin: 5px;
+	margin-left: 80px;
+	background: rgb(32,32,32);
+        // background-image: url("tk_pointer_5_s.gif");
+        background-position: left;
+	border: 1px solid;
+	border-color: white;
+        background-repeat: no-repeat;
+        padding-left: 2px;
+
+}
+.menu4_6 {
+	color: white;
+	margin: 5px;
+	margin-left: 100px;
+	background: rgb(32,32,32);
+        // background-image: url("tk_pointer_6_s.gif");
+        background-position: left;
+	border: 1px solid;
+	border-color: white;
+        background-repeat: no-repeat;
+        padding-left: 2px;
+
+}
+.menu4_7 {
+	color: white;
+	margin: 5px;
+	margin-left: 120px;
+	background: rgb(32,32,32);
+        // background-image: url("tk_pointer_1_s.gif");
+        background-position: left;
+	border: 1px solid;
+	border-color: white;
+        background-repeat: no-repeat;
+        padding-left: 2px;
+
+}
+.menu4_8 {
+	color: white;
+	margin: 5px;
+	margin-left: 140px;
+	background: rgb(32,32,32);
+        // background-image: url("tk_pointer_2_s.gif");
+        background-position: left;
+	border: 1px solid;
+	border-color: white;
+        background-repeat: no-repeat;
+        padding-left: 2px;
+
+}
+.menu4_9 {
+	color: white;
+	margin: 5px;
+	margin-left: 160px;
+	background: rgb(32,32,32);
+        // background-image: url("tk_pointer_3_s.gif");
+        background-position: left;
+	border: 1px solid;
+	border-color: white;
+        background-repeat: no-repeat;
+        padding-left: 2px;
+
+}
+.menu4_10 {
+	color: white;
+	margin: 5px;
+	margin-left: 180px;
+	background: rgb(32,32,32);
+        // background-image: url("tk_pointer_4_s.gif");
+        background-position: left;
+	border: 1px solid;
+	border-color: white;
+        background-repeat: no-repeat;
+        padding-left: 2px;
+
+}
+.menu5_1 {
+	color: white;
+	margin: 5px;
+	margin-left: 0px;
+	background: rgb(32,32,32);
+        // background-image: url("tk_pointer_1_s.gif");
+        background-position: left;
+	border: 1px solid;
+	border-color: white;
+        background-repeat: no-repeat;
+        padding-left: 2px;
+
+}
+.menu5_2 {
+	color: white;
+	margin: 5px;
+	margin-left: 20px;
+	background: rgb(32,32,32);
+        // background-image: url("tk_pointer_2_s.gif");
+        background-position: left;
+	border: 1px solid;
+	border-color: white;
+        background-repeat: no-repeat;
+        padding-left: 2px;
+
+}
+.menu5_3 {
+	color: white;
+	margin: 5px;
+	margin-left: 40px;
+	background: rgb(32,32,32);
+        // background-image: url("tk_pointer_3_s.gif");
+        background-position: left;
+	border: 1px solid;
+	border-color: white;
+        background-repeat: no-repeat;
+        padding-left: 2px;
+
+}
+.menu5_4 {
+	color: white;
+	margin: 5px;
+	margin-left: 60px;
+	background: rgb(32,32,32);
+        // background-image: url("tk_pointer_4_s.gif");
+        background-position: left;
+	border: 1px solid;
+	border-color: white;
+        background-repeat: no-repeat;
+        padding-left: 2px;
+
+}
+.menu5_5 {
+	color: white;
+	margin: 5px;
+	margin-left: 80px;
+	background: rgb(32,32,32);
+        // background-image: url("tk_pointer_5_s.gif");
+        background-position: left;
+	border: 1px solid;
+	border-color: white;
+        background-repeat: no-repeat;
+        padding-left: 2px;
+
+}
+.menu5_6 {
+	color: white;
+	margin: 5px;
+	margin-left: 100px;
+	background: rgb(32,32,32);
+        // background-image: url("tk_pointer_6_s.gif");
+        background-position: left;
+	border: 1px solid;
+	border-color: white;
+        background-repeat: no-repeat;
+        padding-left: 2px;
+
+}
+.menu5_7 {
+	color: white;
+	margin: 5px;
+	margin-left: 120px;
+	background: rgb(32,32,32);
+        // background-image: url("tk_pointer_1_s.gif");
+        background-position: left;
+	border: 1px solid;
+	border-color: white;
+        background-repeat: no-repeat;
+        padding-left: 2px;
+
+}
+.menu5_8 {
+	color: white;
+	margin: 5px;
+	margin-left: 140px;
+	background: rgb(32,32,32);
+        // background-image: url("tk_pointer_2_s.gif");
+        background-position: left;
+	border: 1px solid;
+	border-color: white;
+        background-repeat: no-repeat;
+        padding-left: 2px;
+
+}
+.menu5_9 {
+	color: white;
+	margin: 5px;
+	margin-left: 160px;
+	background: rgb(32,32,32);
+        // background-image: url("tk_pointer_3_s.gif");
+        background-position: left;
+	border: 1px solid;
+	border-color: white;
+        background-repeat: no-repeat;
+        padding-left: 2px;
+
+}
+.menu5_10 {
+	color: white;
+	margin: 5px;
+	margin-left: 180px;
+	background: rgb(32,32,32);
+        // background-image: url("tk_pointer_4_s.gif");
+        background-position: left;
+	border: 1px solid;
+	border-color: white;
+        background-repeat: no-repeat;
+        padding-left: 2px;
+
+}
+.menu6_1 {
+	color: white;
+	margin: 5px;
+	margin-left: 0px;
+	background: rgb(32,32,32);
+        // background-image: url("tk_pointer_1_s.gif");
+        background-position: left;
+	border: 1px solid;
+	border-color: white;
+        background-repeat: no-repeat;
+        padding-left: 2px;
+
+}
+.menu6_2 {
+	color: white;
+	margin: 5px;
+	margin-left: 20px;
+	background: rgb(32,32,32);
+        // background-image: url("tk_pointer_2_s.gif");
+        background-position: left;
+	border: 1px solid;
+	border-color: white;
+        background-repeat: no-repeat;
+        padding-left: 2px;
+
+}
+.menu6_3 {
+	color: white;
+	margin: 5px;
+	margin-left: 40px;
+	background: rgb(32,32,32);
+        // background-image: url("tk_pointer_3_s.gif");
+        background-position: left;
+	border: 1px solid;
+	border-color: white;
+        background-repeat: no-repeat;
+        padding-left: 2px;
+
+}
+.menu6_4 {
+	color: white;
+	margin: 5px;
+	margin-left: 60px;
+	background: rgb(32,32,32);
+        // background-image: url("tk_pointer_4_s.gif");
+        background-position: left;
+	border: 1px solid;
+	border-color: white;
+        background-repeat: no-repeat;
+        padding-left: 2px;
+
+}
+.menu6_5 {
+	color: white;
+	margin: 5px;
+	margin-left: 80px;
+	background: rgb(32,32,32);
+        // background-image: url("tk_pointer_5_s.gif");
+        background-position: left;
+	border: 1px solid;
+	border-color: white;
+        background-repeat: no-repeat;
+        padding-left: 2px;
+
+}
+.menu6_6 {
+	color: white;
+	margin: 5px;
+	margin-left: 100px;
+	background: rgb(32,32,32);
+        // background-image: url("tk_pointer_6_s.gif");
+        background-position: left;
+	border: 1px solid;
+	border-color: white;
+        background-repeat: no-repeat;
+        padding-left: 2px;
+
+}
+.menu6_7 {
+	color: white;
+	margin: 5px;
+	margin-left: 120px;
+	background: rgb(32,32,32);
+        // background-image: url("tk_pointer_1_s.gif");
+        background-position: left;
+	border: 1px solid;
+	border-color: white;
+        background-repeat: no-repeat;
+        padding-left: 2px;
+
+}
+.menu6_8 {
+	color: white;
+	margin: 5px;
+	margin-left: 140px;
+	background: rgb(32,32,32);
+        // background-image: url("tk_pointer_2_s.gif");
+        background-position: left;
+	border: 1px solid;
+	border-color: white;
+        background-repeat: no-repeat;
+        padding-left: 2px;
+
+}
+.menu6_9 {
+	color: white;
+	margin: 5px;
+	margin-left: 160px;
+	background: rgb(32,32,32);
+        // background-image: url("tk_pointer_3_s.gif");
+        background-position: left;
+	border: 1px solid;
+	border-color: white;
+        background-repeat: no-repeat;
+        padding-left: 2px;
+
+}
+.menu6_10 {
+	color: white;
+	margin: 5px;
+	margin-left: 180px;
+	background: rgb(32,32,32);
+        // background-image: url("tk_pointer_4_s.gif");
+        background-position: left;
+	border: 1px solid;
+	border-color: white;
+        background-repeat: no-repeat;
+        padding-left: 2px;
+
+}
+.menu7_1 {
+	color: white;
+	margin: 5px;
+	margin-left: 0px;
+	background: rgb(32,32,32);
+        // background-image: url("tk_pointer_1_s.gif");
+        background-position: left;
+	border: 1px solid;
+	border-color: white;
+        background-repeat: no-repeat;
+        padding-left: 2px;
+
+}
+.menu7_2 {
+	color: white;
+	margin: 5px;
+	margin-left: 20px;
+	background: rgb(32,32,32);
+        // background-image: url("tk_pointer_2_s.gif");
+        background-position: left;
+	border: 1px solid;
+	border-color: white;
+        background-repeat: no-repeat;
+        padding-left: 2px;
+
+}
+.menu7_3 {
+	color: white;
+	margin: 5px;
+	margin-left: 40px;
+	background: rgb(32,32,32);
+        // background-image: url("tk_pointer_3_s.gif");
+        background-position: left;
+	border: 1px solid;
+	border-color: white;
+        background-repeat: no-repeat;
+        padding-left: 2px;
+
+}
+.menu7_4 {
+	color: white;
+	margin: 5px;
+	margin-left: 60px;
+	background: rgb(32,32,32);
+        // background-image: url("tk_pointer_4_s.gif");
+        background-position: left;
+	border: 1px solid;
+	border-color: white;
+        background-repeat: no-repeat;
+        padding-left: 2px;
+
+}
+.menu7_5 {
+	color: white;
+	margin: 5px;
+	margin-left: 80px;
+	background: rgb(32,32,32);
+        // background-image: url("tk_pointer_5_s.gif");
+        background-position: left;
+	border: 1px solid;
+	border-color: white;
+        background-repeat: no-repeat;
+        padding-left: 2px;
+
+}
+.menu7_6 {
+	color: white;
+	margin: 5px;
+	margin-left: 100px;
+	background: rgb(32,32,32);
+        // background-image: url("tk_pointer_6_s.gif");
+        background-position: left;
+	border: 1px solid;
+	border-color: white;
+        background-repeat: no-repeat;
+        padding-left: 2px;
+
+}
+.menu7_7 {
+	color: white;
+	margin: 5px;
+	margin-left: 120px;
+	background: rgb(32,32,32);
+        // background-image: url("tk_pointer_1_s.gif");
+        background-position: left;
+	border: 1px solid;
+	border-color: white;
+        background-repeat: no-repeat;
+        padding-left: 2px;
+
+}
+.menu7_8 {
+	color: white;
+	margin: 5px;
+	margin-left: 140px;
+	background: rgb(32,32,32);
+        // background-image: url("tk_pointer_2_s.gif");
+        background-position: left;
+	border: 1px solid;
+	border-color: white;
+        background-repeat: no-repeat;
+        padding-left: 2px;
+
+}
+.menu7_9 {
+	color: white;
+	margin: 5px;
+	margin-left: 160px;
+	background: rgb(32,32,32);
+        // background-image: url("tk_pointer_3_s.gif");
+        background-position: left;
+	border: 1px solid;
+	border-color: white;
+        background-repeat: no-repeat;
+        padding-left: 2px;
+
+}
+.menu7_10 {
+	color: white;
+	margin: 5px;
+	margin-left: 180px;
+	background: rgb(32,32,32);
+        // background-image: url("tk_pointer_4_s.gif");
+        background-position: left;
+	border: 1px solid;
+	border-color: white;
+        background-repeat: no-repeat;
+        padding-left: 2px;
+
+}
+.menu8_1 {
+	color: white;
+	margin: 5px;
+	margin-left: 0px;
+	background: rgb(32,32,32);
+        // background-image: url("tk_pointer_1_s.gif");
+        background-position: left;
+	border: 1px solid;
+	border-color: white;
+        background-repeat: no-repeat;
+        padding-left: 2px;
+
+}
+.menu8_2 {
+	color: white;
+	margin: 5px;
+	margin-left: 20px;
+	background: rgb(32,32,32);
+        // background-image: url("tk_pointer_2_s.gif");
+        background-position: left;
+	border: 1px solid;
+	border-color: white;
+        background-repeat: no-repeat;
+        padding-left: 2px;
+
+}
+.menu8_3 {
+	color: white;
+	margin: 5px;
+	margin-left: 40px;
+	background: rgb(32,32,32);
+        // background-image: url("tk_pointer_3_s.gif");
+        background-position: left;
+	border: 1px solid;
+	border-color: white;
+        background-repeat: no-repeat;
+        padding-left: 2px;
+
+}
+.menu8_4 {
+	color: white;
+	margin: 5px;
+	margin-left: 60px;
+	background: rgb(32,32,32);
+        // background-image: url("tk_pointer_4_s.gif");
+        background-position: left;
+	border: 1px solid;
+	border-color: white;
+        background-repeat: no-repeat;
+        padding-left: 2px;
+
+}
+.menu8_5 {
+	color: white;
+	margin: 5px;
+	margin-left: 80px;
+	background: rgb(32,32,32);
+        // background-image: url("tk_pointer_5_s.gif");
+        background-position: left;
+	border: 1px solid;
+	border-color: white;
+        background-repeat: no-repeat;
+        padding-left: 2px;
+
+}
+.menu8_6 {
+	color: white;
+	margin: 5px;
+	margin-left: 100px;
+	background: rgb(32,32,32);
+        // background-image: url("tk_pointer_6_s.gif");
+        background-position: left;
+	border: 1px solid;
+	border-color: white;
+        background-repeat: no-repeat;
+        padding-left: 2px;
+
+}
+.menu8_7 {
+	color: white;
+	margin: 5px;
+	margin-left: 120px;
+	background: rgb(32,32,32);
+        // background-image: url("tk_pointer_1_s.gif");
+        background-position: left;
+	border: 1px solid;
+	border-color: white;
+        background-repeat: no-repeat;
+        padding-left: 2px;
+
+}
+.menu8_8 {
+	color: white;
+	margin: 5px;
+	margin-left: 140px;
+	background: rgb(32,32,32);
+        // background-image: url("tk_pointer_2_s.gif");
+        background-position: left;
+	border: 1px solid;
+	border-color: white;
+        background-repeat: no-repeat;
+        padding-left: 2px;
+
+}
+.menu8_9 {
+	color: white;
+	margin: 5px;
+	margin-left: 160px;
+	background: rgb(32,32,32);
+        // background-image: url("tk_pointer_3_s.gif");
+        background-position: left;
+	border: 1px solid;
+	border-color: white;
+        background-repeat: no-repeat;
+        padding-left: 2px;
+
+}
+.menu8_10 {
+	color: white;
+	margin: 5px;
+	margin-left: 180px;
+	background: rgb(32,32,32);
+        // background-image: url("tk_pointer_4_s.gif");
+        background-position: left;
+	border: 1px solid;
+	border-color: white;
+        background-repeat: no-repeat;
+        padding-left: 2px;
+
+}
+.menu9_1 {
+	color: white;
+	margin: 5px;
+	margin-left: 0px;
+	background: rgb(32,32,32);
+        // background-image: url("tk_pointer_1_s.gif");
+        background-position: left;
+	border: 1px solid;
+	border-color: white;
+        background-repeat: no-repeat;
+        padding-left: 2px;
+
+}
+.menu9_2 {
+	color: white;
+	margin: 5px;
+	margin-left: 20px;
+	background: rgb(32,32,32);
+        // background-image: url("tk_pointer_2_s.gif");
+        background-position: left;
+	border: 1px solid;
+	border-color: white;
+        background-repeat: no-repeat;
+        padding-left: 2px;
+
+}
+.menu9_3 {
+	color: white;
+	margin: 5px;
+	margin-left: 40px;
+	background: rgb(32,32,32);
+        // background-image: url("tk_pointer_3_s.gif");
+        background-position: left;
+	border: 1px solid;
+	border-color: white;
+        background-repeat: no-repeat;
+        padding-left: 2px;
+
+}
+.menu9_4 {
+	color: white;
+	margin: 5px;
+	margin-left: 60px;
+	background: rgb(32,32,32);
+        // background-image: url("tk_pointer_4_s.gif");
+        background-position: left;
+	border: 1px solid;
+	border-color: white;
+        background-repeat: no-repeat;
+        padding-left: 2px;
+
+}
+.menu9_5 {
+	color: white;
+	margin: 5px;
+	margin-left: 80px;
+	background: rgb(32,32,32);
+        // background-image: url("tk_pointer_5_s.gif");
+        background-position: left;
+	border: 1px solid;
+	border-color: white;
+        background-repeat: no-repeat;
+        padding-left: 2px;
+
+}
+.menu9_6 {
+	color: white;
+	margin: 5px;
+	margin-left: 100px;
+	background: rgb(32,32,32);
+        // background-image: url("tk_pointer_6_s.gif");
+        background-position: left;
+	border: 1px solid;
+	border-color: white;
+        background-repeat: no-repeat;
+        padding-left: 2px;
+
+}
+.menu9_7 {
+	color: white;
+	margin: 5px;
+	margin-left: 120px;
+	background: rgb(32,32,32);
+        // background-image: url("tk_pointer_1_s.gif");
+        background-position: left;
+	border: 1px solid;
+	border-color: white;
+        background-repeat: no-repeat;
+        padding-left: 2px;
+
+}
+.menu9_8 {
+	color: white;
+	margin: 5px;
+	margin-left: 140px;
+	background: rgb(32,32,32);
+        // background-image: url("tk_pointer_2_s.gif");
+        background-position: left;
+	border: 1px solid;
+	border-color: white;
+        background-repeat: no-repeat;
+        padding-left: 2px;
+
+}
+.menu9_9 {
+	color: white;
+	margin: 5px;
+	margin-left: 160px;
+	background: rgb(32,32,32);
+        // background-image: url("tk_pointer_3_s.gif");
+        background-position: left;
+	border: 1px solid;
+	border-color: white;
+        background-repeat: no-repeat;
+        padding-left: 2px;
+
+}
+.menu9_10 {
+	color: white;
+	margin: 5px;
+	margin-left: 180px;
+	background: rgb(32,32,32);
+        // background-image: url("tk_pointer_4_s.gif");
+        background-position: left;
+	border: 1px solid;
+	border-color: white;
+        background-repeat: no-repeat;
+        padding-left: 2px;
+
+}
+.menu10_1 {
+	color: white;
+	margin: 5px;
+	margin-left: 0px;
+	background: rgb(32,32,32);
+        // background-image: url("tk_pointer_1_s.gif");
+        background-position: left;
+	border: 1px solid;
+	border-color: white;
+        background-repeat: no-repeat;
+        padding-left: 2px;
+
+}
+.menu10_2 {
+	color: white;
+	margin: 5px;
+	margin-left: 20px;
+	background: rgb(32,32,32);
+        // background-image: url("tk_pointer_2_s.gif");
+        background-position: left;
+	border: 1px solid;
+	border-color: white;
+        background-repeat: no-repeat;
+        padding-left: 2px;
+
+}
+.menu10_3 {
+	color: white;
+	margin: 5px;
+	margin-left: 40px;
+	background: rgb(32,32,32);
+        // background-image: url("tk_pointer_3_s.gif");
+        background-position: left;
+	border: 1px solid;
+	border-color: white;
+        background-repeat: no-repeat;
+        padding-left: 2px;
+
+}
+.menu10_4 {
+	color: white;
+	margin: 5px;
+	margin-left: 60px;
+	background: rgb(32,32,32);
+        // background-image: url("tk_pointer_4_s.gif");
+        background-position: left;
+	border: 1px solid;
+	border-color: white;
+        background-repeat: no-repeat;
+        padding-left: 2px;
+
+}
+.menu10_5 {
+	color: white;
+	margin: 5px;
+	margin-left: 80px;
+	background: rgb(32,32,32);
+        // background-image: url("tk_pointer_5_s.gif");
+        background-position: left;
+	border: 1px solid;
+	border-color: white;
+        background-repeat: no-repeat;
+        padding-left: 2px;
+
+}
+.menu10_6 {
+	color: white;
+	margin: 5px;
+	margin-left: 100px;
+	background: rgb(32,32,32);
+        // background-image: url("tk_pointer_6_s.gif");
+        background-position: left;
+	border: 1px solid;
+	border-color: white;
+        background-repeat: no-repeat;
+        padding-left: 2px;
+
+}
+.menu10_7 {
+	color: white;
+	margin: 5px;
+	margin-left: 120px;
+	background: rgb(32,32,32);
+        // background-image: url("tk_pointer_1_s.gif");
+        background-position: left;
+	border: 1px solid;
+	border-color: white;
+        background-repeat: no-repeat;
+        padding-left: 2px;
+
+}
+.menu10_8 {
+	color: white;
+	margin: 5px;
+	margin-left: 140px;
+	background: rgb(32,32,32);
+        // background-image: url("tk_pointer_2_s.gif");
+        background-position: left;
+	border: 1px solid;
+	border-color: white;
+        background-repeat: no-repeat;
+        padding-left: 2px;
+
+}
+.menu10_9 {
+	color: white;
+	margin: 5px;
+	margin-left: 160px;
+	background: rgb(32,32,32);
+        // background-image: url("tk_pointer_3_s.gif");
+        background-position: left;
+	border: 1px solid;
+	border-color: white;
+        background-repeat: no-repeat;
+        padding-left: 2px;
+
+}
+.menu10_10 {
+	color: white;
+	margin: 5px;
+	margin-left: 180px;
+	background: rgb(32,32,32);
+        // background-image: url("tk_pointer_4_s.gif");
+        background-position: left;
+	border: 1px solid;
+	border-color: white;
+        background-repeat: no-repeat;
+        padding-left: 2px;
+
+}
+
+.menulink {
+	FONT-FAMILY: Avdira, Harabara;
+	color: white;	
+}
+
+.menuitem1 {
+        BACKGROUND: rgb(211,162,137);
+        PADDING-LEFT: 7px;
+}
+
+.menuitem2 {
+        BACKGROUND: rgb(211,162,137);
+        PADDING-LEFT: 14px;
+}
+
+.menuitem3 {
+        BACKGROUND: rgb(211,162,137);
+        PADDING-LEFT: 21px;
+}
+
+.menuitem4 {
+        BACKGROUND: rgb(211,162,137);
+        PADDING-LEFT: 28px;
+}
+
+.menuitem5 {
+        BACKGROUND: rgb(211,162,137);
+        PADDING-LEFT: 35px;
+}
+
+.menuitem6 {
+        BACKGROUND: rgb(211,162,137);
+        PADDING-LEFT: 42px;
+}
+
+.menuitem7 {
+       BACKGROUND: rgb(211,162,137);
+        PADDING-LEFT: 49px;
+}
+
+.menuitem8 {
+        BACKGROUND: rgb(211,162,137);
+        PADDING-LEFT: 56px;
+}
+
+.menuitem9 {
+        BACKGROUND: rgb(211,162,137);
+        PADDING-LEFT: 63px;
+}
+
+.TableHeadingColor {
+
+	BACKGROUND: yellow;
+
+}
+
+.TableHeadingColor * {
+
+	PADDING: 1px;
+
+}
+
+.TableRowColor * {
+
+	PADDING: 2px;
+
+}
+
+#lightbox{	position: absolute;	left: 0; width: 100%; z-index: 100; text-align: center; line-height: 0;}
+#lightbox img{ width: auto; height: auto; max-height: 450px }
+#lightbox a img{ border: none; }
+
+#outerImageContainer{ position: relative; background-color: #fff; width: 250px; height: 250px; margin: 0 auto; }
+#imageContainer{ padding: 10px; }
+
+#loading{ position: absolute; top: 40%; left: 0%; height: 25%; width: 100%; text-align: center; line-height: 0; }
+#hoverNav{ position: absolute; top: 0; left: 0; height: 100%; width: 100%; z-index: 10; }
+#imageContainer>#hoverNav{ left: 0;}
+#hoverNav a{ outline: none;}
+
+#prevLink, #nextLink{ width: 49%; height: 100%; background-image: url(data:image/gif;base64,AAAA); /* Trick IE into showing hover */ display: block; }
+#prevLink { left: 0; float: left;}
+#nextLink { right: 0; float: right;}
+#prevLink:hover, #prevLink:visited:hover { background: url(prevlabel.gif) left 15% no-repeat; }
+#nextLink:hover, #nextLink:visited:hover { background: url(nextlabel.gif) right 15% no-repeat; }
+
+#imageDataContainer{ font: 10px Verdana, Helvetica, sans-serif; background-color: #fff; margin: 0 auto; line-height: 1.4em; overflow: auto; width: 100%	; }
+
+#imageData{	padding:0 10px; color: #666; }
+#imageData #imageDetails{ width: 70%; float: left; text-align: left; }	
+#imageData #caption{ font-weight: bold;	}
+#imageData #numberDisplay{ display: block; clear: left; padding-bottom: 1.0em;	}			
+#imageData #bottomNavClose{ width: 66px; float: right;  padding-bottom: 0.7em; outline: none;}	 	
+
+#overlay{ position: absolute; top: 0; left: 0; z-index: 90; width: 100%; height: 500px; background-color: #000; }
+

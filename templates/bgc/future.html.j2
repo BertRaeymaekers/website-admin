@@ -10,12 +10,12 @@
       {% if download is defined %}
       {% set downloads = [download] %}
       {% endif %}
-      {% for download in downloads %}
       <h2>Downloads</h2>
       <ul class="card-list">
+      {% for download in downloads %}
         <li class="card"><a href="{{ download.link }}">{{ download.txt }}</a></li>
-      </ul>
       {% endfor %}
+      </ul>
       {% if slides  %}
       <h2>Foto's</h2>
       <div class="slideshow">
